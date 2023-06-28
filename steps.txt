@@ -1,0 +1,16 @@
+-dockerize database
+
+  docker run --name mongodb -d --rm -p 27017:27017 mongo
+
+-dockerize node
+
+  docker build -t goals-node .
+
+  docker run -p 80:80 --rm --name goals-backend -d goals-node
+
+-dockerize react
+
+  docker build -t goals-react .
+
+  docker run --name goals-frontend --rm -p 3000:3000 -it goals-react
+
