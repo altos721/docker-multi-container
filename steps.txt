@@ -30,3 +30,10 @@
 
   docker run --name mongodb -v data:/data/db -d --rm --network goals-net -e MONGO_INITDB_ROOT_USERNAME=josh -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
 
+  docker run -p 80:80 --network goals-net --rm --name goals-backend -v /Users/chihhaohsu/Udemy/max_docker/80_multi-01-starting-setup/backend:/app -v logs:/app/logs -v /app/node_modules -d goals-node
+
+-database ENV
+
+  docker run -p 80:80 --network goals-net --rm --name goals-backend -v /Users/chihhaohsu/Udemy/max_docker/80_multi-01-starting-setup/backend:/app -v logs:/app/logs -v /app/node_modules -e MONGODB_USERNAME=josh -d goals-node
+
+
