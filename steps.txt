@@ -14,3 +14,19 @@
 
   docker run --name goals-frontend --rm -p 3000:3000 -it goals-react
 
+-create network
+
+  docker network create goals-net
+
+-network database
+
+  docker run --name mongodb -d --rm --network goals-net mongo
+
+  docker run -p 80:80 --network goals-net --rm --name goals-backend -d goals-node
+
+  docker run --name goals-frontend --rm -p 3000:3000 -it goals-react
+
+-data persisting
+
+  docker run --name mongodb -v data:/data/db -d --rm --network goals-net -e MONGO_INITDB_ROOT_USERNAME=josh -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+
